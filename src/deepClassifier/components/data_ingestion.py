@@ -12,20 +12,20 @@ class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
         self.config = config
 
-    def download_file(self):
-        logger.info("Trying to download file...")
-        if not os.path.exists(self.config.local_data_file):
-            logger.info("Download started...")
-            filename, headers = request.urlretrieve(
-                url=self.config.source_URL,
-                filename=self.config.local_data_file
-            )
-            logger.info(f"{filename} download! with following info: \n{headers}")
-        else:
-            logger.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")        
+    # def download_file(self):
+    #     logger.info("Trying to download file...")
+    #     if not os.path.exists(self.config.local_data_file):
+    #         logger.info("Download started...")
+    #         filename, headers = request.urlretrieve(
+    #             url=self.config.source_URL,
+    #             filename=self.config.local_data_file
+    #         )
+    #         logger.info(f"{filename} download! with following info: \n{headers}")
+    #     else:
+    #         logger.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")        
 
     def _get_updated_list_of_files(self, list_of_files):
-        return [f for f in list_of_files if f.endswith(".jpg") and ("Cat" in f or "Dog" in f)]
+        return [f for f in list_of_files if( f.endswith(".jpg") or f.endswith(".png") )and ("Train" in f or "Test" in f)]
 
     def _preprocess(self, zf: ZipFile, f: str, working_dir: str):
         target_filepath = os.path.join(working_dir, f)
