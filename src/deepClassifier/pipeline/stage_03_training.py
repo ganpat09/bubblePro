@@ -11,6 +11,7 @@ def main():
     callback_list = prepare_callbacks.get_tb_ckpt_callbacks()
     
     training_config = config.get_training_config()
+    print(training_config)
     training = Training(config=training_config)
     training.get_base_model()
     training.train_valid_generator()

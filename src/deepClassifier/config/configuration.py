@@ -71,7 +71,7 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "PetImages")
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Bubble_new","Train")
         create_directories([
             Path(training.root_dir)
         ])
